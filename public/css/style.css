@@ -1,0 +1,104 @@
+body {
+    background: url("../img/mum.jpg");
+    background-size: 100%;
+    font-family: 'Kalam', 'Fredoka One', 'Satisfy', 'Chicle', cursive;
+    color: white;
+    letter-spacing: 0.15em;
+    font-weight: 300;
+}
+
+/*#gradient
+{
+    width: 100%;
+    height: 800px;
+    padding: 0px;
+    margin: 0px;
+}*/
+
+.bg {
+    /*background: rgba(242, 168, 61, 0.30);*/
+    /*background: rgba(123, 49, 135, 0.30);*/
+    background: rgba(0, 0, 0, 0.70);
+    /*background: linear-gradient(to top, red, orange, yellow, green, blue, indigo, violet);*/
+}
+
+.text-bold {
+    font-weight: 700;
+}
+
+.margin-top {
+    margin-top: 5em;
+}
+
+.form-group {
+    text-align: center;
+}
+
+#contact_message {
+    height: 7em;
+}
+
+.btn-orange {
+    color: white;
+    background-color: orange;
+    border: none;
+}
+
+/*.text-color {
+    background: linear-gradient(to bottom, violet, red, orange, yellow, green);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: black;
+}
+
+.form-group:first-of-type {
+    color: violet;
+}
+
+.form-group:nth-of-type(2) {
+    color: red;
+}
+
+.form-group:nth-of-type(3) {
+    color: orange;
+}
+
+.form-group:last-of-type {
+    color: yellow;
+}*/
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 9em;
+    font-weight: 600;
+    margin-top: 1em;
+}
+
+p {
+    text-align: center;
+    font-size: 3em;
+    line-height: 2em;
+}
+
+.form-control {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.45em;
+}
+
+.send-button {
+    min-width: 100%;
+    min-height: 50px;
+    font-size: 0.75em;
+    margin: 2em auto;
+}
+
+.form {
+    font-size: 3em;
+
+}
+
+.alert-success {
+    text-align: center;
+    font-size: 2em;
+}

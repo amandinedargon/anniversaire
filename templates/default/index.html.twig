@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+
+{% block body %}
+    {% include 'flash_messages.html.twig' %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col col-9 bg" {#id="gradient"#}>
+                <div class="text-color">
+                    {#<h1>C'est la fête</h1>#}
+                    <p>
+                        Pour fêter mes <br><span class="text-bold"> 70 ans</span>, <br>nous allons faire un petit retour dans les années de ma jeunesse, je veux
+                        dire <br><span class="text-bold">les années 70</span>.<br>
+                        Nous ne serons pas <br><span class="text-bold">70 personnes</span> <br>mais votre présence sera bien sympathique et les cousins
+                        pourront peut-être ainsi se revoir.<br>
+                        Nous ne mangerons pas <br><span class="text-bold">70 plats </span> <br>mais le buffet sera copieux.<br>
+                        Si vous le voulez bien, les <br><span class="text-bold">70 fleurs </span>(ou plus!!) <br>de vos robes, chemises ou chapeaux feront un
+                        tableau multicolore.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col col-9 bg margin-top">
+                <div class="text-color">
+                    <p>
+                        Je vous invite donc le <br>
+                        <span class="text-bold">DIMANCHE 29 JUILLET 2018</span> <br>
+                        à partir de <span class="text-bold">12h30 </span><br>
+                        au <br>
+                        <span class="text-bold">209 rue des Moulins<br>
+                            83600 Fréjus<br></span>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2897.436128053442!2d6.734028215628054!3d43.430606574813616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cebd4f9d18971f%3A0xd0740780b926b771!2s209+Rue+des+Moulins%2C+83600+Fr%C3%A9jus!5e0!3m2!1sfr!2sfr!4v1523475634720" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col col-9 bg margin-top">
+                <div class="text-color">
+                    <p>
+                        Merci de bien vouloir me répondre en indiquant :
+                    </p>
+                </div>
+                <div class="form">
+                    {{ form_start(my_form) }}
+                    {{ form_widget(my_form) }}
+
+                    <input type="submit" value="Send" class="btn btn-orange send-button"/>
+
+                    {{ form_end(my_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+<script>
+var colo
+    var colors = new Array(
+    [62,35,255],
+    [60,255,60],
+    [255,35,98],
+    [45,175,230],
+    [255,0,255],
+    [255,128,0]);
+
+    var step = 0;
+    //color table indices for:
+    // current color left
+    // next color left
+    // current color right
+    // next color right
+    var colorIndices = [0,1,2,3];
+
+    //transition speed
+    var gradientSpeed = 0.002;
+
+    function updateGradient()
+    {
+
+    if ( $===undefined ) return;
+
+    var c0_0 = colors[colorIndices[0]];
+    var c0_1 = colors[colorIndices[1]];
+    var c1_0 = colors[colorIndices[2]];
+    var c1_1 = colors[colorIndices[3]];
+
+    var istep = 1 - step;
+    var r1 = Math.round(istep * c0_0[0] + step * c0_1[0]);
+    var g1 = Math.round(istep * c0_0[1] + step * c0_1[1]);
+    var b1 = Math.round(istep * c0_0[2] + step * c0_1[2]);
+    var color1 = "rgb("+r1+","+g1+","+b1+")";
+
+    var r2 = Math.round(istep * c1_0[0] + step * c1_1[0]);
+    var g2 = Math.round(istep * c1_0[1] + step * c1_1[1]);
+    var b2 = Math.round(istep * c1_0[2] + step * c1_1[2]);
+    var color2 = "rgb("+r2+","+g2+","+b2+")";
+
+    $('#gradient').css({
+    background: "-webkit-gradient(linear, left top, right top, from("+color1+"), to("+color2+"))"}).css({
+    background: "-moz-linear-gradient(left, "+color1+" 0%, "+color2+" 100%)"});
+
+    step += gradientSpeed;
+    if ( step >= 1 )
+    {
+    step %= 1;
+    colorIndices[0] = colorIndices[1];
+    colorIndices[2] = colorIndices[3];
+
+    //pick two new target color indices
+    //do not pick the same as the current one
+    colorIndices[1] = ( colorIndices[1] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
+    colorIndices[3] = ( colorIndices[3] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
+
+    }
+    }
+
+    setInterval(updateGradient,10);
+</script>
+{% endblock %}

@@ -1,0 +1,7 @@
+home_page:
+  path: /test
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController:templateAction
+  defaults:
+    template: 'home_page.html.twig'
+
+
